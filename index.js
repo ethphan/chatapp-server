@@ -23,7 +23,7 @@ io.on("connection", socket => {
 
     socket.emit("message", {
       user: "admin",
-      text: `${user.name}, welcome to the room ${user.room}`
+      text: `${user.name}, welcome to room ${user.room}`
     });
     socket.broadcast
       .to(user.room)
@@ -56,10 +56,10 @@ io.on("connection", socket => {
     if (user) {
       io.to(user.room).emit("message", {
         user: "admin",
-        text: `${user.name} has left`
+        text: `${user.name} has left the room`
       });
     }
   });
 });
 
-server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server has started on PORT: ${PORT}`));
